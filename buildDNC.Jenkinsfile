@@ -9,7 +9,7 @@ node('docker'){
 		dockerImage = docker.build('christianavargas/agent-dnc:v1', './dotnetcore');
 	}
 	stage('push'){
-		docker.withRegistry('',dockerhub){
+		docker.withRegistry('','dockerhub_id'){
 			dockerImage.push()
 		}
 	}
