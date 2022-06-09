@@ -10,8 +10,9 @@ node('docker'){
 	}
 	stage('push'){
 		docker.withRegistry('','dockerhub_id'){
-			dockerImage.tag(BUILD_NUMBER)
 			dockerImage.push()
+			dockerImage.tag(BUILD_NUMBER)
+			dockerImage.push(BUILD_NUMBER)
 		}
 	}
 }
