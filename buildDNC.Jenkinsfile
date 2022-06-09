@@ -6,7 +6,6 @@ node('docker'){
 		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Echochris234/JenkinsDocker']]]);
 	}
 	stage('build'){
-		cat $BUILD_NUMBER"
 		dockerImage = docker.build('christianavargas/agent-dnc'+':v$BUILD_NUMBER', './dotnetcore');
 	}
 	stage('push'){
